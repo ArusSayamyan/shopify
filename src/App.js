@@ -3,10 +3,15 @@ import React from "react";
 import axios from "axios";
 import "./App.css";
 // import Categories from './components/Categories.component'
+import { ReactComponent as CrownSVG } from "./assets/crown.svg";
+import { ReactComponent as BagSVG } from "./assets/shopping-bag.svg";
+import { Link } from "react-router-dom";
+
 
 class App extends React.Component {
   state = {
     categories: [],
+    count: 0,
   };
 
   async componentDidMount() {
@@ -22,13 +27,31 @@ class App extends React.Component {
     }
   }
 
+  
+
   render() {
     const { categories } = this.state;
     console.log(categories);
 
     return (
       <div className="App">
-        <header className="App-header"></header>
+        <header className="App-header">
+          <CrownSVG  className="crownLogo"/>
+          <nav className="navbar">
+                <Link to="/shop" className="item">
+                    SHOP
+                </Link>
+                <Link to="/contacts" className="item">
+                    CONTACTS
+                </Link>
+                <Link to="/auth" className="item">
+                    SIGN IN
+                </Link>
+                <span>
+                    <BagSVG className="bagSVG" count={this.state.count}/>
+                </span>
+            </nav>
+        </header>
         <main className="app-main">
           <ul className="app_main-list">
             {categories.map((category) => {

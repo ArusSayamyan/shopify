@@ -6,19 +6,34 @@
   flex-direction: column;
 }
 .App-header {
-  background-color: rgb(86, 90, 90);
-  height: 80px;
+  padding: 20px 35px;
+  display: flex;
+  flex: 0 0 80px;
+  justify-content: space-between;
+  align-items: center;
 }
-.app-main {
+.navbar {
+  display: flex;
+  align-items: center;
+  white-space: pre;
+}
+.item {
+  min-width: 40px;
+  text-decoration: none;
+  color: inherit;
+  margin-right: 15px;
+}
+/* .app-main {
   flex: 1;
   padding: 20px;
-}
+} */
 
 .app_main-list {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   margin: 0;
+  padding: 20px;
 }
 .category {
   margin: 20px;
@@ -69,4 +84,11 @@
 }
 .category__wrapper:hover > .image {
   transform: scale(1.1);
+}
+
+.bagSVG {
+  height: 25px;
+}
+.crownLogo {
+  cursor: pointer;
 }
