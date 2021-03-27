@@ -1,0 +1,49 @@
+@use "/src/sass/abstracts/mixins";
+
+.container {
+    flex: 1 1 30%;
+    height: 250px;
+    border: 1px solid #000;
+    overflow: hidden;
+    cursor: pointer;
+
+    .wrapper {
+        position: relative;
+        transition: 1s;
+        height: 100%;
+        width: 100%;
+
+        .content {
+            position: absolute;
+            height: 40%;
+            width: 150px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.774);
+
+            @include mixins.flexCenter;
+            flex-direction: column;
+
+            .title {
+                font-size: 20px;
+                font-weight: 500;
+                margin-bottom: 5px;
+                text-transform: uppercase;
+            }
+        }
+
+        .image {
+            transition: 0.5s;
+            height: 100%;
+            width: 100%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        &:hover > .image {
+            transform: scale(1.1);
+        }
+    }
+}
