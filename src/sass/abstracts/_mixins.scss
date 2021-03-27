@@ -1,15 +1,15 @@
 @mixin responsive($breakpoint) {
-    @media only screen and (max-width: $breakpoint + px) {
-        @content;
-    }
+  @media only screen and (max-width: $breakpoint + px) {
+    @content;
+  }
 }
 
 @mixin dynamicAppearance($time) {
-    animation: dynamicAppearance $time ease forwards;
+  animation: dynamicAppearance $time ease forwards;
 }
 
 @mixin flexCenter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

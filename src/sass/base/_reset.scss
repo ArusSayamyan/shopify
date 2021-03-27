@@ -13,12 +13,12 @@ sub,sup,tt,var,b,u,center,dl,dt,dd,ol,ul,li,fieldset,form,label,
 legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,
 details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,
 time,mark,audio,video, input {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -32,88 +32,88 @@ hgroup,
 menu,
 nav,
 section {
-    display: block;
+  display: block;
 }
 body {
-    line-height: 1;
+  line-height: 1;
 }
 ol,
 ul {
-    // list-style: none;
-    margin-left: 2rem;
+  // list-style: none;
+  margin-left: 2rem;
 }
 blockquote,
 q {
-    quotes: none;
+  quotes: none;
 }
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: "";
-    content: none;
+  content: "";
+  content: none;
 }
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 // Number input type's arrows disappeared
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* Firefox */
 input[type="number"] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 input {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    font-size: 1.4rem;
-    &:hover {
-        background-color: transparent;
-    }
+  font-size: 1.4rem;
+  &:hover {
+    background-color: transparent;
+  }
 
-    &:disabled {
-        display: none;
-    }
+  &:disabled {
+    display: none;
+  }
 }
 
 // NOTIFICATION
 
 .notification-message {
-    white-space: pre-line;
+  white-space: pre-line;
 }
 
 // BOOTSRAP
 
 .btn {
-    font-size: 1.4rem;
-    padding: 1rem 1.5rem;
+  font-size: 1.4rem;
+  padding: 1rem 1.5rem;
 }
 .dropdown-menu {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
 
-    .dropdown-item {
-        padding: 1rem 1.5rem;
-        &:hover {
-            background-color: rgba(0, 0, 0, 0.103);
-        }
+  .dropdown-item {
+    padding: 1rem 1.5rem;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.103);
     }
+  }
 }
 
 // TABS
 .nav-tabs {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .nav-item {
-    padding: 1.5rem 1rem;
+  padding: 1.5rem 1rem;
 }

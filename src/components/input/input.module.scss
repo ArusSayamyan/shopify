@@ -1,33 +1,33 @@
 .container {
-    position: relative;
-    margin-bottom: 30px;
+  position: relative;
+  margin-bottom: 30px;
 
-    .input {
-        border-bottom: 1px solid black;
-        height: 50px;
-        width: 100%;
-        &:focus {
-            outline: none;
-            box-shadow: none;
+  .input {
+    border-bottom: 1px solid black;
+    height: 50px;
+    width: 100%;
+    &:focus {
+      outline: none;
+      box-shadow: none;
 
-            ~ .label {
-                top: 0;
-                opacity: 1;
-            }
-        }
+      ~ .label {
+        top: 0;
+        opacity: 1;
+      }
     }
+  }
 
-    .label {
-        transition: 0.3s;
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        opacity: 0.5;
+  .label {
+    transition: 0.3s;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    opacity: 0.5;
 
-        &.active {
-            top: 0;
-            opacity: 1;
-        }
+    &.active {
+      top: 0;
+      opacity: 1;
     }
+  }
 }

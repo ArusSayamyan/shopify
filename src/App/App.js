@@ -8,17 +8,17 @@ import HomePage from "src/pages/home/Home.page";
 import SignInPage from "src/pages/signin/SignIn.page";
 
 const App = () => {
-    return (
-        <div className={styles.container}>
-            <Header />
-            <main className={styles.main}>
-                <Switch>
-                    <Route component={HomePage} path="/home" />
-                    <Route component={SignInPage} path="/signin" />
-                    <Redirect exact from="/" to="/home" />
-                </Switch>
-            </main>
-        </div>
-    );
+  return (
+    <div className={styles.container}>
+      <Header />
+      <main className={styles.main}>
+        <Switch>
+          <Route component={HomePage} path="/home" />
+          <Route component={SignInPage} path="/signin" />
+          <Redirect exact from="/" to="/home" />
+        </Switch>
+      </main>
+    </div>
+  );
 };
 export default App;
