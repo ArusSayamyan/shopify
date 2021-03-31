@@ -1,15 +1,12 @@
-.container {
-  max-width: 950px;
-  padding: 25px 15px;
-  display: flex;
-  justify-content: space-between;
-  margin: 10px auto;
+
+ 
 
   .form {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    padding: 20px 40px;
+    width: 450px;
+    
+    margin-left: 40px;
   }
 
   .title {
@@ -21,4 +18,5 @@
   .title1 {
     padding: 0 0 60px;
   }
-}
+
+  
