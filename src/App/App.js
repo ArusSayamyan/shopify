@@ -7,20 +7,24 @@ import styles from "./app.module.scss";
 import HomePage from "src/pages/home/Home.page";
 import AuthPage from "src/pages/auth/Auth.page";
 import ShopPage from "src/pages/shop/Shop.page";
+import ShopCategory from "src/pages/shop-category/ShopCategory.component";
+// import CategoryItem from "src/pages/home/components/category-item/CategoryItem.component";
 
 const App = () => {
-  return (
-    <div className={styles.container}>
-      <Header />
-      <main className={styles.main}>
-        <Switch>
-        <Route component={ShopPage} path="/shop" />
-          <Route component={HomePage} path="/home" />
-          <Route component={AuthPage} path="/auth" />
-          <Redirect exact from="/" to="/home" />
-        </Switch>
-      </main>
-    </div>
-  );
+    return (
+        <div className={styles.container}>
+            <Header />
+            <main className={styles.main}>
+                <Switch>
+                    <Route component={HomePage} path="/home" />
+                    <Route component={AuthPage} path="/auth" />
+                    <Route exact component={ShopPage} path="/shop" />
+                    <Route component={ShopCategory} path="/shop/:category" />
+                    {/* <Route component={CategoryItem} path="/shop/:category" /> */}
+                    <Redirect exact from="/" to="/home" />
+                </Switch>
+            </main>
+        </div>
+    );
 };
 export default App;

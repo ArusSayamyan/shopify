@@ -1,38 +1,42 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ShopItems from "./components/shop-items/ShopItems.component";
 
 import styles from "./shop.module.scss";
 
-const Shop = () => {
-  const [shopState, setShopState] = useState([]);
+const Shop = ({ history }) => {
+    const [shopState, setShopState] = useState([]);
 
-  useEffect(() => {
-    axios.get("shop").then((result) => {
-      const { data } = result;
-      setShopState(data);
-    });
-  }, []);
+    useEffect(() => {
+        axios.get("shop").then((result) => {
+            const { data } = result;
+            setShopState(data);
+        });
+    }, []);
 
-  const categories = ["hats", "sneakers", "womens", "mens", "jackets"];
+    const categories = ["hats", "sneakers", "womens", "mens", "jackets"];
 
-  return (
-    <div className={styles.container}>
-      {categories.map((category) => {
-        const filteredData = shopState.filter(
-          (shopItem) => shopItem.category === category
-        );
+    const handleShopCategoryClick = (category) => {
+        console.log(category);
+        history.push(`/shop/${category}`);
+    };
 
-        return (
-          <div key={category}>
-            <h1 className={styles.category}>{category}</h1>
-            {filteredData.map((shopItem) => {
-              return <div key={shopItem._id} className={styles.image}>{shopItem.name}</div>;
+    return (
+        <div className={styles.container}>
+            {categories.map((category) => {
+                const filteredData = shopState.filter((shopItem) => shopItem.category === category);
+
+                return (
+                    <ShopItems
+                        key={category}
+                        category={category}
+                        data={filteredData.slice(0, 4)}
+                        handleShopCategoryClick={() => handleShopCategoryClick(category)}
+                    />
+                );
             })}
-          </div>
-        );
-      })}
-    </div>
-  );
+        </div>
+    );
 };
 
 export default Shop;

@@ -1,0 +1,23 @@
+  .container {
+
+      // display: inline-block;\
+      // width: calc(25% - 30px);
+      // min-width: 200px;
+      .title {
+          cursor: default;
+          text-transform: uppercase;
+          display: inline-block;
+          user-select: none;
+
+          &:hover {
+              color: rgba(0, 0, 0, 0.411);
+          }
+      }
+
+      .list {
+          // @include mixins.itemsRow(15);
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 10px;
+      }
+  }

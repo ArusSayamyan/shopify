@@ -5,10 +5,11 @@ const CategoryItem = (props) => {
   const { category } = props;
 
   const [data, setData] = useState({ name: "Narek" });
-
+ 
   const handleClick = () => {
     setData({ ...data, age: 62 });
   };
+
 
   return (
     <li className={styles.container} onClick={handleClick}>

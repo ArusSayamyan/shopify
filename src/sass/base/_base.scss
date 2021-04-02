@@ -1,13 +1,17 @@
+@use "src/sass/abstracts/mixins";
+@use "src/sass/abstracts/variables";
+
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
+    @include mixins.customScrollbar(variables.$color-dark--main);
 }
 
 body {
-  font-family: "Roboto", "Arial Unicode", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.2;
+    font-family: "Roboto", "Arial Unicode", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.2;
 }

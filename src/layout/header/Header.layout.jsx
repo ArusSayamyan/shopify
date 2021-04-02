@@ -1,6 +1,5 @@
 import styles from "./header.module.scss";
-import { Link, useHistory } from "react-router-dom";
-
+import { Link, useHistory} from "react-router-dom";
 import { ReactComponent as CrownSVG } from "src/assets/crown.svg";
 import { ReactComponent as BagSVG } from "src/assets/shopping-bag.svg";
 
@@ -10,6 +9,8 @@ const Header = () => {
   const handleClick = () => {
     history.push("/home");
   };
+let initialValue = 0;
+  
 
 
   return (
@@ -26,7 +27,8 @@ const Header = () => {
           SIGN IN
         </Link>
         <span className={styles.item}>
-          <BagSVG className={styles.bag} />
+          <span className={styles.value}>{initialValue}</span>
+          <BagSVG className={styles.bag}  />
         </span>
       </nav>
     </header>

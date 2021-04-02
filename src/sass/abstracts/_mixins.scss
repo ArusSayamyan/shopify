@@ -1,6 +1,6 @@
 @mixin responsive($breakpoint) {
   @media only screen and (max-width: $breakpoint + px) {
-    @content;
+      @content;
   }
 }
 
@@ -12,4 +12,42 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@mixin itemsRow($gap) {
+  & > :not(:last-child) {
+      margin-right: $gap + px;
+  }
+}
+
+@mixin customScrollbar($color) {
+  scrollbar-color: $color transparent;
+  scrollbar-width: thin;
+  /* width */
+  &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+      background: transparent;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+      background: $color;
+      // border-radius: 5px;
+      &:hover {
+          background: #000;
+          width: 10px;
+      }
+  }
+
+  // @include respond(900) {
+  //     &::-webkit-scrollbar {
+  //         width: 5px;
+  //         height: 5px;
+  //     }
+  // }
 }
