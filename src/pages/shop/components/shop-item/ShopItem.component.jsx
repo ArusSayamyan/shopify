@@ -7,7 +7,7 @@ const ShopItem = (props) => {
     return (
         <div className={styles.container}>
             <div className={styles.imageWrapper}>
-                <img className={styles.image} src={shopItem.imageUrl.replace(" ", "")} alt="" />
+                <img className={styles.image} src={shopItem.imageUrl} alt="" />
                 <button className={styles.btn}>Add to cart</button>
             </div>
 
