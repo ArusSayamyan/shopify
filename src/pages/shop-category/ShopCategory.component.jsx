@@ -11,7 +11,7 @@ const ShopCategory = (props) => {
         axios.get(`shop/${category}`).then((result) => {
             setShopItems(result.data);
         });
-    }, []);
+    }, [category]);
     return (
         <div>
             <ShopItems category={category} data={shopItems} />

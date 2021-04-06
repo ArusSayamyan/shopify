@@ -3,9 +3,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import CategoryItem from "src/pages/home/components/category-item/CategoryItem.component";
 
-import Loader from "src/components/loader/Loader.component";
 // STYLES
 import styles from "./home.module.scss";
+
+import WrapperLoader from "src/components/wrapper-loader/WrapperLoader.component";
 
 const Home = (props) => {
     const [categories, setCategories] = useState([]);
@@ -28,16 +29,14 @@ const Home = (props) => {
 
     const sortedCategories = categories.sort((a, b) => a.id - b.id);
 
-    return isLoading ? (
-        <div className={styles.loaderWrapper}>
-            <Loader />
-        </div>
-    ) : (
-        <ul className={styles.container}>
-            {sortedCategories.map((category) => {
-                return <CategoryItem key={category._id} category={category} />;
-            })}
-        </ul>
+    return (
+        <WrapperLoader isLoading={isLoading}>
+            <ul className={styles.container}>
+                {sortedCategories.map((category) => {
+                    return <CategoryItem key={category._id} category={category} />;
+                })}
+            </ul>
+        </WrapperLoader>
     );
 };
 
