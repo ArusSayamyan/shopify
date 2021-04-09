@@ -1,8 +1,12 @@
+@use "src/sass/abstracts/mixins";
+@use "src/sass/abstracts/variables";
+
 .container {
   flex: 0 0 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 40px;
 
   .nav {
     display: flex;
@@ -10,26 +14,75 @@
     white-space: pre;
 
     .item {
-      min-width: 40px;
+      position: relative;
       text-decoration: none;
       color: inherit;
+
+      .cart {
+        user-select: none;
+        cursor: pointer;
+
+        .bag {
+          height: 30px;
+        }
+
+        .count {
+          position: absolute;
+          top: 60%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 14px;
+        }
+      }
+
+      .cartDropdown {
+        position: absolute;
+        z-index: 10;
+        right: 0;
+        width: 270px;
+        height: 380px;
+        border: 1px solid #000;
+        border-radius: 3px;
+        background-color: #fff;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+
+        .box {
+          min-height: 240px;
+          margin-bottom: 10px;
+          display: flex;
+          flex-direction: column;
+          overflow-y: scroll;
+
+          .itemsContainer {
+            min-height: 100px;
+            width: 100%;
+            display: flex;
+            margin: 10px 0 10px;
+
+            .selectedImage {
+              height: 100px;
+              width: 65px;
+            }
+
+            .itemInfo {
+              width: 70%;
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              justify-content: center;
+              padding: 10px 20px;
+              font-size: 16px;
+            }
+          }
+        }
+      }
     }
 
     & > :not(:last-child) {
       margin-right: 20px;
       min-width: 50px;
     }
-
-    .value {
-      position: relative;
-      left: 16px;
-      font-weight: bold;
-      bottom: 5px;
-      font-size: 12px;
-    }
-  }
-
-  .bag {
-    height: 25px;
   }
 }
