@@ -1,6 +1,8 @@
 import styles from "./category-item.module.scss";
 import { useState } from "react";
 
+
+
 const CategoryItem = (props) => {
   const { category } = props;
 
@@ -9,7 +11,7 @@ const CategoryItem = (props) => {
   const handleClick = () => {
     setData({ ...data, age: 62 });
   };
-
+ 
 
   return (
     <li className={styles.container} onClick={handleClick}>
@@ -19,7 +21,7 @@ const CategoryItem = (props) => {
           style={{ backgroundImage: `url(${category.imageUrl})` }}
         />
         <div className={styles.content}>
-          <div className={styles.title}>{category.title}</div>
+          <div className={styles.title} >{category.title}</div>
           <div className="u-uppercase">shop now</div>
         </div>
       </div>

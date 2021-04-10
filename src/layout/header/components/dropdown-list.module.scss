@@ -1,0 +1,44 @@
+.cartDropdown {
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  width: 270px;
+  height: 380px;
+  border: 1px solid #000;
+  border-radius: 3px;
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+
+  .box {
+    min-height: 240px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    object-fit: cover;
+
+    .itemsContainer {
+      min-height: 100px;
+      width: 100%;
+      display: flex;
+      margin: 10px 0 10px;
+
+      .selectedImage {
+        width: 75px;
+        object-fit: cover;
+      }
+
+      .itemInfo {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+    }
+  }
+}

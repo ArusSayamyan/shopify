@@ -26,7 +26,8 @@ const Home = (props) => {
         };
         getData();
     }, []);
-
+   
+  
     const sortedCategories = categories.sort((a, b) => a.id - b.id);
 
     return (
