@@ -4,12 +4,12 @@ import { Link, useHistory } from "react-router-dom";
 import OutsideClickHandler from "react-outside-click-handler";
 import { ReactComponent as CrownSVG } from "src/assets/crown.svg";
 import { ReactComponent as BagSVG } from "src/assets/shopping-bag.svg";
-import DropdownList from "src/layout/header/components/DropdownList.component"
+import DropdownList from "src/layout/header/components/DropdownList.component";
 
 import styles from "./header.module.scss";
 
 const Header = (props) => {
-  const { shopItemsCount} = props;
+  const { shopItemsCount } = props;
   const history = useHistory();
   const [cartIsOpen, setCartIsOpen] = useState(false);
 
@@ -43,7 +43,7 @@ const Header = (props) => {
                 <span className={styles.count}>{shopItemsCount}</span>
               )}
             </div>
-             {cartIsOpen && <DropdownList />}
+            {cartIsOpen && <DropdownList />}
           </div>
         </OutsideClickHandler>
       </nav>
@@ -52,7 +52,7 @@ const Header = (props) => {
 };
 
 const mapStateToProps = (store) => ({
-  shopItems: store.shop.favorites,
+ 
   shopItemsCount: store.shop.favorites.length,
 });
 
