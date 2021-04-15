@@ -1,7 +1,16 @@
+import { addToFavorites } from "src/redux/shop/shop.actions";
+import { connect, useDispatch } from "react-redux";
+
 import styles from "./shop-item.module.scss";
 
 const ShopItem = (props) => {
-    const { shopItem, handleAddClick } = props;
+    const { shopItem, user } = props;
+    const dispatch = useDispatch();
+
+    const handleAddClick = () => {
+        if (user) dispatch(addToFavorites(shopItem));
+        else console.log("Modal");
+    };
     return (
         <div className={styles.container}>
             <div className={styles.imageWrapper}>
@@ -19,4 +28,8 @@ const ShopItem = (props) => {
     );
 };
 
-export default ShopItem;
+const mapStateToProps = (store) => ({
+    user: store.auth.user,
+});
+
+export default connect(mapStateToProps)(ShopItem);

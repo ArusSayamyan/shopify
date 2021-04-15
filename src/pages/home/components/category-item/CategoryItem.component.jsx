@@ -1,15 +1,16 @@
 import styles from "./category-item.module.scss";
-import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 
 
 const CategoryItem = (props) => {
   const { category } = props;
 
-  const [data, setData] = useState({ name: "Narek" });
+ const history = useHistory();
  
   const handleClick = () => {
-    setData({ ...data, age: 62 });
+    history.push(`/shop/${category.routeName}`);
+
   };
  
 
@@ -21,7 +22,7 @@ const CategoryItem = (props) => {
           style={{ backgroundImage: `url(${category.imageUrl})` }}
         />
         <div className={styles.content}>
-          <div className={styles.title} >{category.title}</div>
+          <div className={styles.title} onClick={handleClick} >{category.title}</div>
           <div className="u-uppercase">shop now</div>
         </div>
       </div>

@@ -4,12 +4,16 @@ import { Link, useHistory } from "react-router-dom";
 import OutsideClickHandler from "react-outside-click-handler";
 import { ReactComponent as CrownSVG } from "src/assets/crown.svg";
 import { ReactComponent as BagSVG } from "src/assets/shopping-bag.svg";
+import countShopItems from "./utils/countShopItems.util";
+//COMPONENTS
 import DropdownList from "src/layout/header/components/DropdownList.component";
-
+//ACTIONS
+import { clearUserData } from "src/redux/auth/auth.actions";
+//STYLES
 import styles from "./header.module.scss";
 
 const Header = (props) => {
-  const { shopItemsCount } = props;
+  const { shopItemsCount, user, clearUserData } = props;
   const history = useHistory();
   const [cartIsOpen, setCartIsOpen] = useState(false);
 
@@ -18,6 +22,14 @@ const Header = (props) => {
   };
 
   const toggleCartDropdown = () => setCartIsOpen(!cartIsOpen);
+  const handleSignInSignOutClick = () => {
+    if (!user) {
+      history.push("/auth");
+    } else {
+      // TODO clear user data
+      clearUserData();
+    }
+  };
 
   return (
     <header className={styles.container}>
@@ -29,31 +41,32 @@ const Header = (props) => {
         <Link to="/contacts" className={styles.item}>
           CONTACTS
         </Link>
-        <Link to="/auth" className={styles.item}>
-          SIGN IN
-        </Link>
-        <OutsideClickHandler
-          disabled={!cartIsOpen}
-          onOutsideClick={toggleCartDropdown}
-        >
-          <div className={styles.item}>
-            <div className={styles.cart} onClick={toggleCartDropdown}>
-              <BagSVG className={styles.bag} />
-              {!!shopItemsCount && (
-                <span className={styles.count}>{shopItemsCount}</span>
-              )}
+        <div className={styles.item} onClick={handleSignInSignOutClick}>
+                    {!user ? "SIGN IN" : "SIGN OUT"}
+                </div>
+                {user && (
+                    <OutsideClickHandler disabled={!cartIsOpen} onOutsideClick={toggleCartDropdown}>
+                        <div className={styles.item}>
+                            <div className={styles.cart} onClick={toggleCartDropdown}>
+                                <BagSVG className={styles.bag} />
+                                {!!shopItemsCount && (
+                                    <span className={styles.count}>{shopItemsCount}</span>
+                                )}
+                            </div>
+                            {cartIsOpen && <DropdownList />}
             </div>
-            {cartIsOpen && <DropdownList />}
-          </div>
-        </OutsideClickHandler>
+            </OutsideClickHandler>
+                )}
       </nav>
     </header>
   );
 };
 
 const mapStateToProps = (store) => ({
- 
-  shopItemsCount: store.shop.favorites.length,
+  shopItemsCount: countShopItems(store.shop.favorites),
+    user: store.auth.user,
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = { clearUserData };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

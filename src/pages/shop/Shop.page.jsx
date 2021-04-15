@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import ShopItems from "./components/shop-items/ShopItems.component";
+
 import WrapperLoader from "src/components/wrapper-loader/WrapperLoader.component";
 import styles from "./shop.module.scss";
 import { setGlobalErrorMessage } from "src/redux/common/common.actions";
+//COMPONENTS
+import ShopItems from "./components/shop-items/ShopItems.component";
+import ShopModal from "./components/shop-modal/ShopModal.component";
 
 const Shop = ({ history }) => {
     const [shopState, setShopState] = useState([]);
@@ -23,7 +26,7 @@ const Shop = ({ history }) => {
                 dispatch(setGlobalErrorMessage(error.message))
 
             } finally {
-                setIsLoading(false)
+                setIsLoading(false);
             }
         };
         getShopData();
@@ -51,6 +54,7 @@ const Shop = ({ history }) => {
                     />
                 );
             })}
+            <ShopModal />
         </div>
         </WrapperLoader>
     );
