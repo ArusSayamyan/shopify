@@ -1,38 +1,32 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+// BASE COMPONENTS
 import Button from "src/components/button/Button.component";
 import Input from "src/components/input/Input.component";
-import { setUserData } from "src/redux/auth/auth.actions";
+import { userSignInAsync } from "src/redux/auth/auth.actions";
 import { useHistory } from "react-router-dom";
-import { setGlobalErrorMessage } from "src/redux/common/common.actions";
 import styles from "./sign-in.module.scss";
 
-import axios from "axios";
-
 const SignIn = () => {
-  const [inputState, setInputState] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+    const [inputState, setInputState] = useState({});
 
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const handleInput = (event) => {
-    const { value, name } = event.target;
-    setInputState({ ...inputState, [name]: value });
-  };
+    const { errorMessage, isLoading } = useSelector((store) => ({
+        errorMessage: store.auth.errorMessage,
+        isLoading: store.auth.isLoading,
+    }));
 
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const handleInput = (event) => {
+        const { value, name } = event.target;
+        setInputState({ ...inputState, [name]: value });
+    };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setIsLoading(true);
-    try {
-        const result = await axios.post("auth/login", inputState);
-        const data = result.data.data;
-        dispatch(setUserData(data));
-        history.push("/shop");
-    } catch (error) {
-        dispatch(setGlobalErrorMessage());
-    }
-  };
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const isOK = await dispatch(userSignInAsync(inputState));
+        if (isOK) history.push("/shop");
+    };
   return (
    
       <div className={styles.form}>
@@ -55,6 +49,7 @@ const SignIn = () => {
             value={inputState.password}
             onChange={handleInput}
           />
+          {errorMessage && <div className="u-text--error">{errorMessage}</div>}
            <Button type="submit" isLoading={isLoading}>
                 Sign In
             </Button>

@@ -10,7 +10,7 @@ const CategoryItem = (props) => {
  
   const handleClick = () => {
     history.push(`/shop/${category.routeName}`);
-
+   
   };
  
 
@@ -22,7 +22,7 @@ const CategoryItem = (props) => {
           style={{ backgroundImage: `url(${category.imageUrl})` }}
         />
         <div className={styles.content}>
-          <div className={styles.title} onClick={handleClick} >{category.title}</div>
+          <div className={styles.title}>{category.title}</div>
           <div className="u-uppercase">shop now</div>
         </div>
       </div>

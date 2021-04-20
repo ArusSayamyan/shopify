@@ -1,4 +1,4 @@
-import { addToFavorites } from "src/redux/shop/shop.actions";
+import { addToFavorites, setModalState } from "src/redux/shop/shop.actions";
 import { connect, useDispatch } from "react-redux";
 
 import styles from "./shop-item.module.scss";
@@ -9,8 +9,9 @@ const ShopItem = (props) => {
 
     const handleAddClick = () => {
         if (user) dispatch(addToFavorites(shopItem));
-        else console.log("Modal");
+        else dispatch(setModalState(true));
     };
+
     return (
         <div className={styles.container}>
             <div className={styles.imageWrapper}>

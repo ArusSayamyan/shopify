@@ -17,11 +17,9 @@ const Header = (props) => {
   const history = useHistory();
   const [cartIsOpen, setCartIsOpen] = useState(false);
 
-  const handleClick = () => {
-    history.push("/home");
-  };
-
+ 
   const toggleCartDropdown = () => setCartIsOpen(!cartIsOpen);
+
   const handleSignInSignOutClick = () => {
     if (!user) {
       history.push("/auth");
@@ -33,7 +31,7 @@ const Header = (props) => {
 
   return (
     <header className={styles.container}>
-      <CrownSVG className="u-cursor--pointer" onClick={handleClick} />
+      <CrownSVG className="u-cursor--pointer" onClick={() => history.push("/home")} />
       <nav className={styles.nav}>
         <Link to="/shop" className={styles.item}>
           SHOP
@@ -53,7 +51,7 @@ const Header = (props) => {
                                     <span className={styles.count}>{shopItemsCount}</span>
                                 )}
                             </div>
-                            {cartIsOpen && <DropdownList />}
+                            {cartIsOpen && <DropdownList  toggleCartDropdown={toggleCartDropdown} />}
             </div>
             </OutsideClickHandler>
                 )}

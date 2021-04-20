@@ -1,0 +1,45 @@
+.container {
+  width: 65%;
+  margin: 0 auto;
+  margin-top: 20px;
+  .table {
+    width: 100%;
+    th,
+    td {
+      padding: 20px 0;
+    }
+
+    thead {
+      tr {
+        border-bottom: 1px solid #000;
+        th {
+          padding: 20px 0;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          vertical-align: middle;
+          text-align: center;
+        }
+      }
+    }
+
+    .image {
+      width: 100px;
+    }
+  }
+
+  .bottom {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+
+    .total {
+      font-size: 24px;
+      margin: 8px 0;
+    }
+  }
+}
