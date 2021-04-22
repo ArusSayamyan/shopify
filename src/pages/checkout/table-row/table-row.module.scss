@@ -1,5 +1,10 @@
 .container {
     border-bottom: 1px solid rgb(107, 107, 107);
+    .quantity {
+        display: flex;
+        gap: 10px;
+        user-select: none;
+    }
     .image {
         width: 100px;
     }

@@ -1,72 +1,52 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 // BASE COMPONENTS
 import WrapperLoader from "src/components/wrapper-loader/WrapperLoader.component";
-
+import { getShopDataAsync } from "src/redux/shop/shop.actions";
 // COMPONENTS
 import ShopItems from "../shop-items/ShopItems.component";
 
 import styles from "./shop-preview.module.scss";
 
 const Shop = ({ history }) => {
-    const [shopState, setShopState] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+  const { categories, isLoading, shopIsLoading, shopData } = useSelector(
+    (store) => store.shop
+  );
 
-    useEffect(() => {
-        const getShopData = async () => {
-            try {
-                setIsLoading(true);
-                const result = await axios.get("shop");
-                const { data } = result;
-                setShopState(data);
-            } catch (error) {
-                console.log(error.message);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        getShopData();
+  useEffect(() => {
+    dispatch(getShopDataAsync());
+  }, []);
 
-        // TODO --> REVIEW
-        // (async () => {
-        //     const result = await axios.get("shop");
-        //     const { data } = result;
-        //     setShopState(data);
-        // })();
+  const categoriesList = categories.map((category) => category.routeName);
 
-        // axios.get("shop").then((result) => {
-        //     const { data } = result;
-        //     setShopState(data);
-        // });
-    }, []);
+  const handleShopCategoryClick = (category) => {
+    history.push(`/shop/${category}`);
+  };
 
-    const categories = ["hats", "sneakers", "womens", "mens", "jackets"];
+  return (
+    <WrapperLoader isLoading={isLoading || shopIsLoading}>
+      <div className={styles.container}>
+        {categoriesList.map((category) => {
+          const filteredData = shopData.filter(
+            (shopItem) => shopItem.category === category
+          );
 
-    const handleShopCategoryClick = (category) => {
-        history.push(`/shop/${category}`);
-    };
-
-    return (
-        <WrapperLoader isLoading={isLoading}>
-            <div className={styles.container}>
-                {categories.map((category) => {
-                    const filteredData = shopState.filter(
-                        (shopItem) => shopItem.category === category
-                    );
-
-                    return (
-                        <ShopItems
-                            key={category}
-                            category={category}
-                            data={filteredData.slice(0, 4)}
-                            handleShopCategoryClick={() => handleShopCategoryClick(category)}
-                        />
-                    );
-                })}
-            </div>
-        </WrapperLoader>
-    );
+          return (
+            <ShopItems
+              key={category}
+              category={category}
+              data={filteredData.slice(0, 4)}
+              handleShopCategoryClick={() => handleShopCategoryClick(category)}
+            />
+          );
+        })}
+      </div>
+    </WrapperLoader>
+  );
 };
 
 export default Shop;

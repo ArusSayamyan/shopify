@@ -9,14 +9,14 @@ const ShopModal = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const handleBackClick = () => {
-      dispatch(setModalState(false));
+    dispatch(setModalState(false));
   };
 
   const stop = (event) => event.stopPropagation();
 
   const goToSignIn = () => {
-      dispatch(setModalState(false));
-      history.push("/auth");
+    dispatch(setModalState(false));
+    history.push("/auth");
   };
   return ReactDOM.createPortal(
     <div className={styles.container}>

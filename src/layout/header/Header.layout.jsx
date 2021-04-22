@@ -33,13 +33,13 @@ const Header = (props) => {
     <header className={styles.container}>
       <CrownSVG className="u-cursor--pointer" onClick={() => history.push("/home")} />
       <nav className={styles.nav}>
-        <Link to="/shop" className={styles.item}>
+        <Link to="/shop" className={styles.link}>
           SHOP
         </Link>
-        <Link to="/contacts" className={styles.item}>
+        <Link to="/contacts" className={styles.link}>
           CONTACTS
         </Link>
-        <div className={styles.item} onClick={handleSignInSignOutClick}>
+        <div className={styles.link} onClick={handleSignInSignOutClick}>
                     {!user ? "SIGN IN" : "SIGN OUT"}
                 </div>
                 {user && (

@@ -8,15 +8,15 @@ import ShopModal from "src/pages/shop/components/shop-modal/ShopModal.component"
 import styles from "./shop.module.scss";
 
 const Shop = () => {
-    const { modalIsShown } = useSelector((store) => store.shop);
+  const { modalIsShown } = useSelector((store) => store.shop);
 
-    return (
-        <div className={styles.container}>
-            <Route component={ShopPreview} exact path="/shop" />
-            <Route component={ShopCategory} path="/shop/:category" />
-            {modalIsShown && <ShopModal />}
-        </div>
-    );
+  return (
+    <div className={styles.container}>
+      <Route component={ShopPreview} exact path="/shop" />
+      <Route component={ShopCategory} path="/shop/:category" />
+      {modalIsShown && <ShopModal />}
+    </div>
+  );
 };
 
 export default Shop;

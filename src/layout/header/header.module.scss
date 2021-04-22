@@ -10,11 +10,13 @@
     align-items: center;
     white-space: pre;
 
-    .item {
-      position: relative;
+    .link {
       text-decoration: none;
       color: inherit;
       cursor: pointer;
+    }
+    .item {
+      position: relative;
 
       .cart {
         user-select: none;

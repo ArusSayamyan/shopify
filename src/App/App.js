@@ -1,5 +1,5 @@
 import { Switch, Route, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 
 // LAYOUT
 import Header from "src/layout/header/Header.layout";
@@ -11,11 +11,18 @@ import AuthPage from "src/pages/auth/Auth.page";
 import ShopPage from "src/pages/shop/Shop.page";
 import CheckOutPage from "src/pages/checkout/Checkout.page";
 import Oops from "src/components/oops/Oops.component";
+import { useEffect } from "react";
+import { getCategoriesAsync } from "src/redux/shop/shop.actions";
 
 // import { appIsLoading } from "src/redux/common/common.reducer";
 
 const App = (props) => {
   const { globalErrorMessage } = props;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+      dispatch(getCategoriesAsync());
+  }, []);
 
   return (
     <div className={styles.container}>

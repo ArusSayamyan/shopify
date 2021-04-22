@@ -1,18 +1,14 @@
 import styles from "./category-item.module.scss";
 import { useHistory } from "react-router-dom";
 
-
-
 const CategoryItem = (props) => {
   const { category } = props;
 
- const history = useHistory();
- 
+  const history = useHistory();
+
   const handleClick = () => {
     history.push(`/shop/${category.routeName}`);
-   
   };
- 
 
   return (
     <li className={styles.container} onClick={handleClick}>
